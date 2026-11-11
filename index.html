@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="New World Logic develops and ships advanced mobile and web applications for businesses around the world.">
+<link rel="canonical" href="https://newworldlogic.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f5c66'/%3E%3Cpath d='M9 23V9l14 14V9' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>New World Logic</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: one left-aligned column, 1040px max. Sticky bar, type-led hero, then four plain sections split by hairlines. */
+:root {
+  --bg: #f6f8f9;
+  --surface: #ffffff;
+  --fg: #111a22;
+  --muted: #55626f;
+  --line: #dde3e8;
+  --accent: #0f5c66;
+  --on-accent: #ffffff;
+  --display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1317; --surface: #151d23; --fg: #e8eef2; --muted: #9aa8b4;
+    --line: #26323b; --accent: #62c6d0; --on-accent: #06262a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1317; --surface: #151d23; --fg: #e8eef2; --muted: #9aa8b4;
+  --line: #26323b; --accent: #62c6d0; --on-accent: #06262a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: 1040px; margin-inline: auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--bg); border-bottom: 1px solid var(--line); }
+.bar-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 14px; }
+.brand { font-family: var(--display); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; text-decoration: none; }
+.nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.nav a { text-decoration: none; color: var(--muted); font-size: 0.95rem; font-weight: 500; padding-block: 4px; }
+.nav a:hover { color: var(--fg); }
+
+.hero-in { padding-block: 72px 80px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(2.6rem, 8vw, 5rem); line-height: 1.02; letter-spacing: -0.03em; margin: 0; text-wrap: balance; }
+.lede { font-size: clamp(1.1rem, 2.4vw, 1.35rem); color: var(--muted); max-width: 34em; margin: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.btn { display: inline-block; font: 600 0.98rem var(--body); text-decoration: none; padding: 12px 22px; border-radius: 8px; border: 1px solid var(--accent); cursor: pointer; }
+.btn-solid { background: var(--accent); color: var(--on-accent); }
+.btn-line { background: transparent; color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+.platforms { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 14px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); list-style: none; color: var(--muted); font-size: 0.92rem; }
+.platforms strong { color: var(--fg); font-weight: 600; }
+
+.sec { border-top: 1px solid var(--line); }
+.sec-in { padding-block: 60px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 20px 48px; }
+@media (max-width: 720px) { .sec-in { grid-template-columns: minmax(0, 1fr); padding-block: 44px; } .hero-in { padding-block: 48px 56px; } }
+h2 { font-family: var(--display); font-weight: 600; font-size: 1.6rem; line-height: 1.15; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+.sec-body { display: flex; flex-direction: column; gap: 16px; min-width: 0; max-width: 38em; }
+.sec-body p { margin: 0; }
+.sec-body .soft { color: var(--muted); }
+
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+.mail-addr { font-family: var(--display); font-weight: 600; font-size: 1.15rem; overflow-wrap: anywhere; min-width: 0; text-decoration: none; user-select: all; }
+.copy { font: 600 0.85rem var(--body); color: var(--accent); background: transparent; border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+.copy:hover { border-color: var(--accent); }
+
+.foot-in { padding-block: 28px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: var(--muted); font-size: 0.88rem; }
+</style>
+
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="brand" href="#top">New World Logic</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#support">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="eyebrow">Mobile and web applications</p>
+      <h1>New World Logic</h1>
+      <p class="lede">We develop and ship advanced mobile and web applications for businesses around the world.</p>
+      <div class="actions">
+        <a class="btn btn-solid" href="#contact">Contact us</a>
+        <a class="btn btn-line" href="#support">Get support</a>
+      </div>
+      <ul class="platforms" aria-label="Platforms we build for">
+        <li><strong>iOS</strong> apps</li>
+        <li><strong>Android</strong> apps</li>
+        <li><strong>Web</strong> applications</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="about">
+    <div class="wrap sec-in">
+      <h2>About</h2>
+      <div class="sec-body">
+        <p>New World Logic LLC builds software for businesses. We focus on companies that will have a big impact on the future and that help solve real-world problems.</p>
+        <p class="soft">We believe strongly in what we produce, and we back it with solid support and quick responses.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="privacy">
+    <div class="wrap sec-in">
+      <h2>Privacy</h2>
+      <div class="sec-body">
+        <p>Our company prioritizes the privacy of every client and business we work with.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="support">
+    <div class="wrap sec-in">
+      <h2>Support</h2>
+      <div class="sec-body">
+        <p>Need help with an application we built? Email our support team and we will respond quickly.</p>
+        <div class="mail">
+          <a class="mail-addr" id="support-addr" href="mailto:hello@newworldlogic.com">hello@newworldlogic.com</a>
+          <button class="copy" id="copy-support" type="button" data-copy="support-addr">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="wrap sec-in">
+      <h2>Business inquiries</h2>
+      <div class="sec-body">
+        <p>To talk about a project or working with us, email us directly.</p>
+        <div class="mail">
+          <a class="mail-addr" id="contact-addr" href="mailto:hello@newworldlogic.com">hello@newworldlogic.com</a>
+          <button class="copy" id="copy-contact" type="button" data-copy="contact-addr">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sec">
+  <div class="wrap foot-in">
+    <span>© 2026 New World Logic LLC</span>
+    <span>Walker, Louisiana, USA</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected';
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
+    };
+    try { navigator.clipboard.writeText(el.textContent).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
